@@ -39,4 +39,9 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 Jenkins est lancé sur le port 8080 par default
 
 
+sudo systemctl status jenkins
+sudo systemctl start jenkins
+sudo systemctl stop jenkins
+sudo systemctl disable jenkins
+sudo systemctl enable jenkins
 
