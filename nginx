@@ -1,0 +1,18 @@
+sudo apt install nginx
+
+
+sudo nano /etc/nginx/sites-available/default
+>> Regarder ici si on a notre fichier index.html
+index index.html index.htm index.nginx-debian.html;
+
+>> repertoire de travail
+/var/www/html
+
+>> On change les droits
+sudo chown -R www-data:pi /var/www/html/
+sudo chmod -R 770 /var/www/html/
+
+>> On lance
+sudo /etc/init.d/nginx restart
+
+
