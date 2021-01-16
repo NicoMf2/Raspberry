@@ -1,0 +1,42 @@
+>> https://pimylifeup.com/jenkins-raspberry-pi/
+
+>> Preparing for Jenkins on the Raspberry Pi <<
+
+sudo apt update
+sudo apt upgrade
+
+sudo apt install openjdk-11-jre
+java --version
+>> openjdk 11.0.6 2020-01-14
+>> OpenJDK Runtime Environment (build 11.0.6+10-post-Raspbian-1deb10u1)
+>> OpenJDK Server VM (build 11.0.6+10-post-Raspbian-1deb10u1, mixed mode)
+
+>> Installing Jenkins to the Raspberry Pi <<
+
+>> Ici on récupère la clef pour être sur de la dernière version
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+
+>> On cree un fichier sur lequel on ajoute la distribution jenkins à ajouter
+sudo nano /etc/apt/sources.list.d/jenkins.list
+  >> dans ce fichier placer la commande suivante
+deb https://pkg.jenkins.io/debian binary/
+
+>> On lance la mise à jour pour trouver le package jenkins
+sudo apt update
+
+>> On installe Jenkins
+sudo apt install jenkins
+
+>> Unlocking Jenkins <<
+>> Recupère l'IP de la machine
+hostname -I
+>> x.x.x.x x.x.x.x 
+
+>> get admin Jenkins password
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+>> BlaBla...
+
+Jenkins est lancé sur le port 8080 par default
+
+
+
