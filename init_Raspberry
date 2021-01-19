@@ -14,7 +14,9 @@ lsb_release -a
 
 # Permet de mettre le fireware à jour
 sudo apt-get -y dist-upgrade
-Uname -a
+uname -a
+>> Linux raspberrypi 4.19.118-v7l+ #1311 SMP Mon Apr 27 14:26:42 BST 2020 armv7l GNU/Linux
+
 sudo BRANCH=next rpi-update
 sudo reboot
 
