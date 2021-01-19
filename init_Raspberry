@@ -1,0 +1,49 @@
+# Permet de connaitre le nom d la release 
+lsb_release -a
+
+>> No LSB modules are available.
+>> Distributor ID:	Raspbian
+>> Description:	Raspbian GNU/Linux 10 (buster)
+>> Release:	10
+>> Codename:	buster
+
+# Permet de tout mettre la distribution à jour
+sudo apt-get update
+sudo apt-get upgrade --fix-missing
+lsb_release -a
+
+# Permet de mettre le fireware à jour
+sudo apt-get -y dist-upgrade
+Uname -a
+sudo BRANCH=next rpi-update
+sudo reboot
+
+# Permet de faire le nettoyage des archives qui ne servent plus
+sudo du -hs /var/cache/apt/archives
+sudo apt-get clean
+sudo du -hs /var/cache/apt/archives
+
+# Installation de mosquitto pour les flux MQ
+sudo apt-get install -y mosquitto mosquitto-clients
+
+# Test simple
+mosquitto_sub -h localhost -v test_channel
+mosquitto_pub -h localhost -t test_channel -m "Hello Raspberry"
+
+# Test securise
+cd /et/mosquitto
+sudo mosquitto_passwd -c fileAuth user
+# Dans le fichier de paramétrage
+sudo nano mosquitto.conf
+# Modifier 
+allow_anonymous false
+password_file /etc/mosquitto/fileAuth
+# restart
+sudo reboot
+sudo mosquitto_passwd -b fileAuth "Nuser" "PassUser"
+mosquitto_pub -h localhost -t test -m "demo securise" -u Nuser -P PassUser
+mosquitto_sub -h localhost -v test_channel
+mosquitto_pub -h localhost -t test_channel -m "Hello Raspberry"
+# Service
+sudo service mosquitto stop
+sudo service mosquitto start
