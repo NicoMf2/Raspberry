@@ -1,0 +1,62 @@
+wget https://github.com/prometheus/prometheus/releases/download/v2.24.1/prometheus-2.24.1.linux-armv7.tar.gz
+tar xfz prometheus-2.24.1.linux-armv7.tar.gz
+mv prometheus-2.24.1.linux-armv7 prometheus
+sudo nano /etc/systemd/system/prometheus.service 
+
+Description=Prometheus Server
+Documentation=https://prometheus.io/docs/introduction/overview/
+After=network-online.target
+
+[Service]
+User=pi
+Restart=on-failure
+
+#Change this line if Prometheus is somewhere different
+ExecStart=/home/pi/prometheus/prometheus \
+  --config.file=/home/pi/prometheus/prometheus.yml \
+  --storage.tsdb.path=/home/pi/prometheus/data
+
+[Install]
+WantedBy=multi-user.target
+
+
+sudo systemctl daemon-reload   
+sudo systemctl start prometheus 
+sudo systemctl status prometheus 
+# Lancer au démarrage de raspberry
+sudo systemctl enable prometheus 
+
+ http://127.0.0.1:9090/metrics
+ 
+ 
+ **************************************
+ *****          GRAFANA         *******
+ **************************************
+wget https://dl.grafana.com/oss/release/grafana-7.3.7.linux-armv7.tar.gz
+
+tar xfz grafana-7.3.7.linux-armv7.tar.gz
+mv grafana-7.3.7 grafana/
+sudo nano /etc/systemd/system/grafana.service
+
+[Unit]
+Description=Grafana Server
+After=network.target
+
+[Service]
+Type=simple
+User=pi
+ExecStart=/home/pi/grafana/bin/grafana-server
+WorkingDirectory=/home/pi/grafana/
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload   
+sudo systemctl start grafana 
+sudo systemctl status grafana
+# Lancer au démarrage de raspberry
+sudo systemctl enable grafana 
+
+ http://127.0.0.1:3000
