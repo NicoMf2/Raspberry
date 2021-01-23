@@ -1,0 +1,5 @@
+curl -sSL get.docker.com | sh
+docker version
+sudo systemctl enable docker
+sudo usermod -aG docker pi
+sudo reboot
