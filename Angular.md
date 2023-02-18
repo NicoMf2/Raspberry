@@ -1,6 +1,3 @@
----
-author : nico
----
 
 # Installation Angular [^1]
 ```
