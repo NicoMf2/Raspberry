@@ -1,12 +1,6 @@
 
 # Installation Angular [^1]
 
-
-[!NOTE]
-test
-
-> [!NOTE]
-> test
 ```
 sudo apt-get install -y nodejs
 node -v 
@@ -22,7 +16,7 @@ sudo npm install -g @angular/cli@latest
 ```
 
 
-[^1]: 202301
+[^1]: source Internet 2023
 
  
 
