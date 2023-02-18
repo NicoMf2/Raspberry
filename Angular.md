@@ -1,5 +1,12 @@
 
 # Installation Angular [^1]
+
+
+[!NOTE]
+test
+
+> [!NOTE]
+> test
 ```
 sudo apt-get install -y nodejs
 node -v 
